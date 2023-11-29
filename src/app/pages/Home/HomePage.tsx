@@ -1,18 +1,17 @@
 import HomeFeature from "@app/features/Home/HomeFeature";
+import { getActivePageMenu } from "@app/helper/menu.helper";
 import React from "react";
 import { Helmet } from 'react-helmet';
+import { useSelector } from "react-redux";
 
 export default function HomePage() {
+  const { menus } = useSelector((state: any) => state.ui)
+  const activePage = getActivePageMenu(menus)
   return (
     <>
-      <Helmet>‍
-        <title>Pets - Products</title>‍
-        <meta name="description" content="Find all the best quality products your pet may need" />
-        <meta property="og:url" content="pets.abc" />
-        <meta property="og:site_name" content="Pets - Products" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="article" />
-        <meta property="fb:app_id" content="ID_APP_FACEBOOK" />
+      <Helmet
+        title={activePage ? `${activePage?.display} - ${process.env.APP_NAME}` : `${process.env.APP_NAME}`}
+        meta={[{name:"description", content:"Deskripsi halaman web Anda"}]}>
       </Helmet>
       <HomeFeature />
     </>
