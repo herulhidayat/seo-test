@@ -1,0 +1,41 @@
+/**
+ * COLORS
+ * --
+ */
+$default: (
+  'colors': (
+    /** Main */ 
+    'primary': #144734,
+    'secondary': #f9a620,
+
+    /** Sentiment */ 
+    'neutral': #44566c,
+    'positive': #002db3,
+    'negative': #b32400,
+    
+    //ms office
+    "ppt": #FF8F6B,
+    "doc": #2B7CD3,
+    "xls": #21A366,
+    "pdf": #F55B4B,
+
+    /** State */ 
+    'success': #01cc8f,
+    'info': #189ee1,
+    'danger': #e11818,
+    'warmomg': #f9a620,
+
+    /** neutral variant element color */ 'light': #f8f9fa,
+    'dark': #f5f8fa,
+  ),
+  'mode': (
+    'light': (
+      'black': #2a2e34,
+      'white': #fff,
+    ),
+    'dark': (
+      'black': #fff,
+      'white': #141722,
+    ),
+  ),
+) !default;

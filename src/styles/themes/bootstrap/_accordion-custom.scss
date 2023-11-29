@@ -1,0 +1,46 @@
+.accordion-button {
+  font-size: 0.86rem !important;
+  font-weight: 500;
+
+  .icon {
+    color: var(--black-600);
+  }
+
+  &:not(.collapsed) {
+    .icon {
+      color: var(--primary) !important;
+    }
+  }
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(-90deg);
+}
+
+.accordion > .nav-link {
+  &.active {
+    color: var(--primary) !important;
+
+    .icon {
+      color: var(--primary) !important;
+    }
+  }
+}
+.accordion-body a.nav-link {
+  &::before {
+    float: left;
+    padding-right: 0.5rem;
+    color: var(--black-400);
+    content: '\2022';
+    font-size: 1.5rem;
+    height: auto;
+    margin-top: -0.5rem;
+  }
+
+  &.active {
+    color: var(--primary) !important;
+    &::before {
+      color: var(--primary) !important;
+    }
+  }
+}

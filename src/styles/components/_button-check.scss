@@ -1,0 +1,14 @@
+
+.btn-check:checked + .btn-delivery-mode {
+  color: var(--black);
+  border-color: var(--primary);
+  .check{
+    display: block;
+  }
+}
+
+.btn-check + .btn-delivery-mode {
+  color: var(--black);
+  background-color: var(--white);
+  border-color: var(--black-100);
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "context": "/api/v1/apps",
+    "target": "http://192.168.107.33:8900/api/v1",
+    "docs": "http://192.168.107.33:8900/swagger/index.html",
+    "logLevel": "debug",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/v1/apps": ""
+    }
+  }
+]

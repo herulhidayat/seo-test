@@ -1,0 +1,56 @@
+.bs-tooltip-left {
+  padding: 0 0.4rem;
+}
+.bs-tooltip-right {
+  padding: 0 0.4rem;
+}
+.bs-tooltip-right .arrow {
+  left: 0;
+  &:before {
+    right: -1;
+    border-width: 0;
+    border-right-color: var(--black-75) !important;
+  }
+}
+.tooltip-inner {
+  background-color: var(--white) !important;
+  color: var(--primary-font-500) !important;
+  opacity: 1 !important;
+  border: 0;
+  text-align: left !important;
+  font-size: .75rem;
+  box-shadow: 0rem .25rem 1.9375rem #00000007, 0rem .0913rem .7072rem #00000004, 0rem .0443rem .3433rem #00000003, 0rem .0217rem .1683rem #00000002, 0rem .0086rem .0666rem #00000001;
+
+  .icon {
+    width: 2rem;
+    display: block;
+    float: left;
+  }
+  .nav-link {
+    padding: 0.5rem 0 !important;
+    text-align: left !important;
+    min-width: 15rem;
+    font-size: 1rem;
+    color: #fff !important;
+
+    &.small.disabled {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--black-600) !important;
+    }
+  }
+}
+
+.tooltip.show.nav-sub {
+    opacity: 1 !important; 
+
+    .tooltip-inner{
+        max-width: 15rem !important;
+        padding: 0.65rem 1rem !important; 
+    }
+
+    .tooltip-arrow::before {
+        border-width: 0.7rem 0.7rem 0.7rem 0 !important;
+        border-right-color: #fff !important;
+    }
+}

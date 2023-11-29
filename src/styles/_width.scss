@@ -1,0 +1,8 @@
+@for $i from 0 through 100 {
+  .w-#{$i} {
+    width : round(percentage($i/100));
+  }
+  .h-#{$i} {
+    width : round(percentage($i/100));
+  }
+}

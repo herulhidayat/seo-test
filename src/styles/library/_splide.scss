@@ -1,0 +1,35 @@
+
+.splide__slide{
+  background-color: var(--white);
+  padding: 0.857rem;
+  color: var(--black);
+  border-radius: .57rem;
+  border: 1px solid var(--black-100);
+}
+.splide{
+  width: 100%;
+  position: relative;
+  height: 10rem;
+}
+.splide__track{
+  position: absolute !important;
+  top: 0;
+  width: 100%;
+}
+.splide__arrow{
+  background-color: var(--white) !important;
+  opacity: 1 !important;
+  width: 2.28rem !important;
+  height: 2.28rem !important;
+  border: 1px solid var(--black-100) !important;
+  &.splide__arrow--prev{
+    left: -1em;
+  }
+  &.splide__arrow--next{
+    right: -1em;
+  }
+}
+
+.is-active.splide__slide {
+  border: 1px solid var(--primary);
+}

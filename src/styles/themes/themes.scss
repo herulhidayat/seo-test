@@ -1,0 +1,9 @@
+@import "./default/themes.scss";
+
+.main-container {
+  >.container{
+    .container{
+      padding: 0 !important;
+    }
+  }
+}

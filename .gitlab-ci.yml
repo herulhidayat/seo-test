@@ -1,0 +1,67 @@
+stages:
+  - build
+  - deploy
+
+# Build Production
+prod-build:
+  stage: build
+  tags:
+    - server99250
+  only:
+    - master
+  script:
+    - ip a
+    - nvm install v16
+    - nvm use v16
+    - node -v
+    - npm install
+    - npm run build:prod
+    - "curl --header \"Content-Type: application/json\" --request POST 192.168.99.250:2600/broadcast --data '{ \"project\": \"'$CI_PROJECT_NAME'\", \"branch\": \"'$CI_COMMIT_BRANCH'\", \"status\": \"start\" }'"
+  artifacts:
+    paths:
+      - build
+    expire_in: 1 hour
+
+# Deploy Production
+prod-deploy:
+  stage: deploy
+  tags:
+    - server99250
+  only:
+    - master
+  script: 
+    - ssh root@192.168.24.176 "rm -rf /usr/share/nginx/html/fe-production/ai-showcase/ai-showcase"
+    - scp -r build root@192.168.24.176:/usr/share/nginx/html/fe-production/ai-showcase/ai-showcase
+    - "curl --header \"Content-Type: application/json\" --request POST 192.168.99.250:2600/broadcast --data '{ \"project\": \"'$CI_PROJECT_NAME'\", \"branch\": \"'$CI_COMMIT_BRANCH'\", \"status\": \"success\" }'"
+
+# Build Staging
+staging-build:
+  stage: build
+  tags:
+    - server99250
+  only:
+    - staging
+  script:
+    - ip a
+    - nvm install v16
+    - nvm use v16
+    - node -v
+    - npm install
+    - npm run build:prod
+    - "curl --header \"Content-Type: application/json\" --request POST 192.168.99.250:2600/broadcast --data '{ \"project\": \"'$CI_PROJECT_NAME'\", \"branch\": \"'$CI_COMMIT_BRANCH'\", \"status\": \"start\" }'"
+  artifacts:
+    paths:
+      - build
+    expire_in: 1 hour
+
+# Deploy Staging
+staging-deploy:
+  stage: deploy
+  tags:
+    - server99250
+  only:
+    - staging
+  script:
+    - ssh root@192.168.24.39 "rm -rf /usr/share/nginx/html/fe-staging/ai-showcase/build"
+    - scp -r build root@192.168.24.39:/usr/share/nginx/html/fe-staging/ai-showcase/build
+    - "curl --header \"Content-Type: application/json\" --request POST 192.168.99.250:2600/broadcast --data '{ \"project\": \"'$CI_PROJECT_NAME'\", \"branch\": \"'$CI_COMMIT_BRANCH'\", \"status\": \"success\" }'"
